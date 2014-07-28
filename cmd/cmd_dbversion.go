@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"bitbucket.org/liamstask/goose/lib/goose"
@@ -14,11 +14,7 @@ var dbVersionCmd = &Command{
 	Run:     dbVersionRun,
 }
 
-func dbVersionRun(cmd *Command, args ...string) {
-	conf, err := dbConfFromFlags()
-	if err != nil {
-		log.Fatal(err)
-	}
+func dbVersionRun(cmd *Command, conf *goose.DBConf, args ...string) {
 
 	current, err := goose.GetDBVersion(conf)
 	if err != nil {

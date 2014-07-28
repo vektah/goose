@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"bitbucket.org/liamstask/goose/lib/goose"
@@ -22,12 +22,7 @@ type StatusData struct {
 	Status string
 }
 
-func statusRun(cmd *Command, args ...string) {
-
-	conf, err := dbConfFromFlags()
-	if err != nil {
-		log.Fatal(err)
-	}
+func statusRun(cmd *Command, conf *goose.DBConf, args ...string) {
 
 	// collect all migrations
 	min := int64(0)

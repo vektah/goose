@@ -1,9 +1,11 @@
 package main
 
 import (
+	cmds "bitbucket.org/liamstask/goose/cmd"
 	"bitbucket.org/liamstask/goose/lib/goose"
 	"flag"
 	"fmt"
+	"log"
 	"os"
 	"strings"
 	"text/template"
@@ -19,15 +21,6 @@ func dbConfFromFlags() (dbconf *goose.DBConf, err error) {
 	return goose.NewDBConf(*flagPath, *flagEnv, *flagPgSchema)
 }
 
-var commands = []*Command{
-	upCmd,
-	downCmd,
-	redoCmd,
-	statusCmd,
-	createCmd,
-	dbVersionCmd,
-}
-
 func main() {
 
 	flag.Usage = usage
@@ -39,9 +32,9 @@ func main() {
 		return
 	}
 
-	var cmd *Command
+	var cmd *cmds.Command
 	name := args[0]
-	for _, c := range commands {
+	for _, c := range cmds.Commands() {
 		if strings.HasPrefix(c.Name, name) {
 			cmd = c
 			break
@@ -54,13 +47,18 @@ func main() {
 		os.Exit(1)
 	}
 
-	cmd.Exec(args[1:])
+	dbconf, err := dbConfFromFlags()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	cmd.Exec(dbconf, args[1:])
 }
 
 func usage() {
 	fmt.Print(usagePrefix)
 	flag.PrintDefaults()
-	usageTmpl.Execute(os.Stdout, commands)
+	usageTmpl.Execute(os.Stdout, cmds.Commands())
 }
 
 var usagePrefix = `

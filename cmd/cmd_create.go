@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"bitbucket.org/liamstask/goose/lib/goose"
@@ -17,7 +17,7 @@ var createCmd = &Command{
 	Run:     createRun,
 }
 
-func createRun(cmd *Command, args ...string) {
+func createRun(cmd *Command, conf *goose.DBConf, args ...string) {
 
 	if len(args) < 1 {
 		log.Fatal("goose create: migration name required")
@@ -28,12 +28,7 @@ func createRun(cmd *Command, args ...string) {
 		migrationType = args[1]
 	}
 
-	conf, err := dbConfFromFlags()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	if err = os.MkdirAll(conf.MigrationsDir, 0777); err != nil {
+	if err := os.MkdirAll(conf.MigrationsDir, 0777); err != nil {
 		log.Fatal(err)
 	}
 

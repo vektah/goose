@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"bitbucket.org/liamstask/goose/lib/goose"
@@ -13,12 +13,7 @@ var upCmd = &Command{
 	Run:     upRun,
 }
 
-func upRun(cmd *Command, args ...string) {
-
-	conf, err := dbConfFromFlags()
-	if err != nil {
-		log.Fatal(err)
-	}
+func upRun(cmd *Command, conf *goose.DBConf, args ...string) {
 
 	target, err := goose.GetMostRecentDBVersion(conf.MigrationsDir)
 	if err != nil {
