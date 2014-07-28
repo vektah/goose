@@ -105,7 +105,7 @@ import (
 	"encoding/gob"
 
 	_ "{{.Import}}"
-	"bitbucket.org/liamstask/goose/lib/goose"
+	"bitbucket.org/michaeltibben/goose/lib/goose"
 )
 
 func main() {

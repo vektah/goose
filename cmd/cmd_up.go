@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"bitbucket.org/liamstask/goose/lib/goose"
+	"bitbucket.org/michaeltibben/goose/lib/goose"
 	"log"
 )
 
