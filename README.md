@@ -3,7 +3,7 @@ This is a fork of https://bitbucket.org/michaeltibben/goose, which is a fork of 
 
 This fork contains work to:
  - use goose as a library, while sharing the command classes
- - not pull in every database backend, only the ones used.
+ - remove sqlite support, as it pulls in and compiles ~150k lines of c regardless of being used and prevents static binaries from being built.
 
 # goose
 
@@ -202,7 +202,7 @@ goose will expand environment variables in the `open` element. For an example, s
 ## Other Drivers
 goose knows about some common SQL drivers, but it can still be used to run Go-based migrations with any driver supported by `database/sql`. An import path and known dialect are required.
 
-Currently, available dialects are: "postgres", "mysql", or "sqlite3"
+Currently, available dialects are: "postgres", "mysql"
 
 To run Go-based migrations with another driver, specify its import path and dialect, as shown below.
 

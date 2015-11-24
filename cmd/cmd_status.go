@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"bitbucket.org/michaeltibben/goose/lib/goose"
+	"github.com/vektah/goose/lib/goose"
 	"database/sql"
 	"fmt"
 	"log"

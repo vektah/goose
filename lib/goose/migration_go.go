@@ -24,7 +24,6 @@ type templateData struct {
 func init() {
 	gob.Register(PostgresDialect{})
 	gob.Register(MySqlDialect{})
-	gob.Register(Sqlite3Dialect{})
 }
 
 //
@@ -105,7 +104,7 @@ import (
 	"encoding/gob"
 
 	_ "{{.Import}}"
-	"bitbucket.org/michaeltibben/goose/lib/goose"
+	"github.com/vektah/goose/lib/goose"
 )
 
 func main() {

@@ -1,8 +1,8 @@
 package main
 
 import (
-	cmds "bitbucket.org/michaeltibben/goose/cmd"
-	"bitbucket.org/michaeltibben/goose/lib/goose"
+	cmds "github.com/vektah/goose/cmd"
+	"github.com/vektah/goose/lib/goose"
 	"flag"
 	"fmt"
 	"log"

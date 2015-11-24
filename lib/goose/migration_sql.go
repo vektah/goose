@@ -117,7 +117,7 @@ func splitSQLStatements(r io.Reader, direction bool) (stmts []string) {
 
 	if upSections == 0 && downSections == 0 {
 		log.Fatalf(`ERROR: no Up/Down annotations found, so no statements were executed.
-			See https://bitbucket.org/michaeltibben/goose/overview for details.`)
+			See https://github.com/vektah/goose/overview for details.`)
 	}
 
 	return
