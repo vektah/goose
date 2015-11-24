@@ -1,10 +1,15 @@
+# FORKCEPTION WARNING
+This is a fork of https://bitbucket.org/michaeltibben/goose, which is a fork of https://bitbucket.org/liamstask/goose.
+
+This fork contains work to:
+ - use goose as a library, while sharing the command classes
+ - not pull in every database backend, only the ones used.
+
 # goose
 
 goose is a database migration tool.
 
 You can manage your database's evolution by creating incremental SQL or Go scripts.
-
-[![Build Status](https://drone.io/bitbucket.org/michaeltibben/goose/status.png)](https://drone.io/bitbucket.org/michaeltibben/goose/latest)
 
 # Install
 
